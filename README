@@ -1,0 +1,109 @@
+Title: HW1: CharArrayLists
+Author: Naveed Naeem 
+UTLN: nnaeem01
+
+Purpose: The purpose of this program is to create a class called CharArrayLists
+which is a modfied version of the array list data structure designed to handle
+characters. The CharArrayLists class 
+
+Acknowledgements: Matthew Russell, Darcy Corson, Folks who posted on Piazza to
+help clarify aspects of the assignment
+
+Files Provided:
+
+    - CharArrayList.h: 
+        - Contains the full class definition of the CharArrayList class
+        - Contains the defintions of private member functions and helper 
+          functions
+        - Contains the definition for the copy constructor that uses operator
+          overloading
+
+    - CharArrayList.cpp:
+        - Contains the public method definitions for all functions that were 
+          outlined in the assignment
+        - Each public method contains a function contract describing what it 
+          does
+    
+    - unit_tests.cpp:
+        - Contains the unit tests that were written to verify the functionality
+          of each function
+        - Each tests contains a brief description of what it's testing
+    
+How to Compile and Run:
+    - To compile the program you can run the make command in your terminal to
+      compile and link all the files in the directory
+    - To compile just the unit tests type "make unit_tests" in terminal in your
+      current working directory
+    - To run the unit tests program type "./unit_tests" in the terminal
+
+Data Structures Outline:
+    - Array List:
+        - An Array List is a data structure that allows the user to store a 
+        collection of objects (in the case of this homework, chars). The array
+        can grow or shrink as needed. Elements can be easily inserted or 
+        removed by index.
+
+        Advantages:
+        - Flexible in size
+        - Efficient since elements can be access by their index
+
+        Disadvantages:
+        - Inefficient for inserting or deleting elements. Anytime a element is
+         inserted or deleted the remaining elements need to be shifted
+        - The size can grow dramatically and slow the program down. It's 
+        generally better to pre-allocate these array's if possible if the 
+        size is going to get large
+
+Algorithm's Used:
+    - Linear Search:
+        - A modified version of linear search was used to implement the 
+        insertInOrder() method
+
+Testing Methodology:
+    - I wrote explicit tests to test every public method function
+    - Test conditions tested for specific scenarios that would cause errors. 
+    These include instances such as array lists of size 0, indices out of 
+    range (<0 or greater than numChars - 1), large, medium, small array 
+    sizes, etc.
+    - For testing expected behavior of lists I primarly used both empty lists
+    and lists that contained all the characters of the lower-case alphabet
+    since the behavior is easy to predict based on the specific test.
+    
+    Steps Taken in Testing:
+    - Write a test for invalid cases for a given function and write a test 
+    for valid cases for a given function
+    - Call "make unit_tests" to make sure the program compiles
+    - Run ./unit_tests to make sure no assertions fail locally
+        - Iterate functionality to fix any issues.
+    - Repeat the make on Halligan servers
+    - Repeat running on Halligan servers but also use valgrind
+        - Fix and memory leak, segfault issues and repeat
+    - Repeat for each public class method
+
+    Debugging: For issues not obviously wrong I would debug the specific test 
+    case that was giving me issues. I was able debug files the successfully 
+    compile using the C/C++ Runner VS Code extension.
+
+Estimated Time Taken:
+    - Approximately 17 hours, +- and 1 Hour
+
+Timer Questions:
+1. - Fastest was Access (653 nanoseconds)
+   - Slowest was Insertion at the front (3423798 nanoseconds)
+   - Second Slowest was Removal at the front (2837198 nanoeconds)
+2. - Access is the fastest because the array list isn't being modified.
+     Access usually happens in O(1) time complexity.
+     Insertion and Removal at the front takes the longest because all the
+     remaining elements in the array list need to be shifted. This will take
+     O(n) time, where n is the size of the array list.
+     Removing or adding to the back of the list usually takes constant time
+     since the size of the array is already known. It will take slightly longer
+     in the cases where the array needs to be resized but other than that it
+     can occur in O(n) time.
+     Removing elements from the front takes less time than adding at the front
+     because of the cases where the allocated memory needs to be expanded when
+     inserting.
+     Inserting and Removing at the middle take roughly half the time as 
+     inserting and removing at the front of the list since only half the 
+     elements need to be shifted.
+
